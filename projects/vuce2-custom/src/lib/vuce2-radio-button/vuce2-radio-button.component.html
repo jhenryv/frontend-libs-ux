@@ -1,0 +1,13 @@
+<div class="espaciado">
+    <label>{{etiqueta}}</label><br>
+    <mat-radio-group [disabled]="disabled" (change)="onChangeValue($event)" (focusout)="onTouched()">
+        <mat-radio-button 
+            class="example-margin" 
+            *ngFor="let option of item.options" 
+            [checked]="option.selected"
+            [value]="option.key">
+            {{option.value}}
+        </mat-radio-button>
+    </mat-radio-group>
+    <vuce2-form-error-msg [control]="control"></vuce2-form-error-msg> 
+</div>

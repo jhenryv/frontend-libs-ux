@@ -1,0 +1,36 @@
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<div style="margin-top: 20px;">
+    <div class="row">
+        <div class="col-md-7">
+            <a (click)="onHome()" style="cursor: pointer;">
+                <img style="height: 100px;" src="/assets/vuce2-assets/images/logo_vuce.png" />
+            </a>
+        </div>
+        <div class="col-md-1">
+            <button type="button" class="btn btn-light position-relative">
+                <mat-icon>notifications</mat-icon>
+                <span class="badge bg-danger">4</span>
+            </button>
+            <!-- <img [src]="'images/campana.png' | assetUrl" /> -->
+        </div>
+        <div class="col-md-1">
+            <!-- <img [src]="'images/carrito.png' | assetUrl" /> -->
+            <!-- <mat-icon>shopping_cart</mat-icon> -->
+            <button type="button" class="btn btn-light position-relative">
+                <mat-icon>shopping_cart</mat-icon>
+                <span class="badge bg-danger">0</span>
+            </button>
+        </div>
+        <div class="col-md-2 mb-2">
+            {{userName}}
+        </div>
+        <div class="col-md-1">
+            <a (click)="onLogin()" style="cursor: pointer;">
+                <img src="/assets/vuce2-assets/images/user.png" />
+            </a>
+            <a (click)="onLogout()" style="cursor: pointer;">Logout</a>
+        </div>
+    </div>
+</div>
+<br>

@@ -1,0 +1,84 @@
+<form autocomplete="off" novalidate #formulario>
+    <ng-container *ngTemplateOutlet="labelTemplate"></ng-container>
+    <ng-container *ngTemplateOutlet="progressTemplate"></ng-container>
+    <ng-container *ngTemplateOutlet="uploadFileTemplate"></ng-container>
+    <ng-container *ngTemplateOutlet="hintInfoTemplate"></ng-container>
+    <ng-container *ngTemplateOutlet="hintErrorTemplate"></ng-container>
+    <ng-container *ngTemplateOutlet="uploadButton"></ng-container>
+</form>
+
+
+<!-- ============================================ -->
+<!-- TEMPLATE PARA LA ETIQUETA DEL INPUT -->
+<!-- ============================================ -->
+<ng-template #labelTemplate>
+    <mat-label *ngIf="config.label" class="mat-body-strong">{{config.label}}</mat-label>
+</ng-template>
+
+<!-- ============================================ -->
+<!-- TEMPLATE PARA EL CAMPO DE TEXTO Y BOTON -->
+<!-- ============================================ -->
+<ng-template #uploadFileTemplate>
+    <div class="input-group mb-1">
+        <label class="input-group-btn">
+            <span class="btn btn-primary spanExam">Examinar
+                <input #inputFile type="file" name="file" id="file" style="display: none;"
+                    (change)="handleChangeFile($event)">
+            </span>
+        </label>
+        
+        <input type="text" id="uploadFile" name="uploadFile" class="form-control" [(ngModel)]="displayText" readonly>
+        <span id="spanimagen" class="input-group-text">
+            <mat-icon style="color:green; width:20px; height:20px" *ngIf="isFileAccept">check_bold</mat-icon>
+            <mat-icon style="color:red; width:20px; height:20px" *ngIf="isFileReject">close</mat-icon>
+        </span>
+    </div>
+</ng-template>
+
+<!-- ============================================ -->
+<!-- TEMPLATE PARA MOSTRAR EL HINT DE INFORMACION -->
+<!-- ============================================ -->
+<ng-template #hintInfoTemplate>
+    <mat-hint
+        *ngIf="config.showHintInfo"
+        class="hint-info-archivo"
+    >
+        <mat-icon>info</mat-icon>
+        Peso máximo {{config.pesoMaximoEnMB}}MB. Tipos de archivo permitidos: {{acceptedFiles}}
+    </mat-hint>
+</ng-template>
+
+<!-- ============================================ -->
+<!-- TEMPLATE PARA MOSTRAR EL HINT DE ERROR FILE  -->
+<!-- ============================================ -->
+<ng-template #hintErrorTemplate>
+    <br>
+    <mat-hint
+        *ngIf="hasErrorFile"
+        class="hint-error-archivo"
+    >
+        <mat-icon>cancel</mat-icon>
+        {{errorFileMessage}}
+    </mat-hint>
+</ng-template>
+
+
+<!-- ============================================ -->
+<!-- TEMPLATE PARA EL PROGRESO -->
+<!-- ============================================ -->
+<ng-template #progressTemplate>
+    <div class="progress form-group" *ngIf="progress > 0">
+        <div class="progress-bar progress-bar-striped bg-success" role="progressbar" [style.width.%]="progress">
+            {{progress}}%
+        </div>
+    </div>
+</ng-template>
+
+
+<!-- ============================================ -->
+<!-- TEMPLATE PARA BOTON ENVIO -->
+<!-- ============================================ -->
+<ng-template #uploadButton>
+    <br>
+    <button class="btn btn-primary btn-block" [disabled]="!isFileAccept || isLoading" (click)="submitFile()">Enviar</button>
+</ng-template>

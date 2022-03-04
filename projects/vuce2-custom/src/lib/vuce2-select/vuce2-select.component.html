@@ -1,0 +1,23 @@
+<div class="espaciado">
+    <mat-form-field class="bg-white">
+        <mat-label>{{etiqueta}}</mat-label>
+        <select
+            matNativeControl   
+            [(ngModel)]="selected"  
+            [disabled] = "disabled"
+            (change)="onChangeValue($event)"  
+            (blur)="onTouched()"
+        >
+            <option  value='' label="-- seleccione una opcion --"></option>
+            <option
+                *ngFor="let item of items" 
+                [value]="item.id" 
+                [disabled]="item.disabled"
+             >
+                {{item.text}}
+            </option>
+        </select>
+        <mat-hint>{{texto_alternativo}}</mat-hint>
+    </mat-form-field>
+</div>
+<vuce2-form-error-msg [control]="control"></vuce2-form-error-msg> 

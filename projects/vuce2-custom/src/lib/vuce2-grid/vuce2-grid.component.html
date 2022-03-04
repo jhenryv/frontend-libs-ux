@@ -1,0 +1,90 @@
+<div class="vuce2-grid-table_wrapper container">
+    <div class="row">
+        <div class="col-6">
+            <label *ngIf="paging.showPaging">
+                <span *ngFor="let s of state.language.lengthMenu.split(' ')">
+                    <span [ngSwitch]="s">
+                        <select *ngSwitchCase="'_MENU_'" class="d-inline-block form-control input-sm" style="width:80px"
+                            [(ngModel)]="state.paging.itemsPerPage" (change)="state.changePaging(1, $any($event.target).value)">
+                            <option *ngFor="let pn of paging.itemsPerPageOptions" [value]="pn">{{pn}}</option>
+                        </select>
+                        <span *ngSwitchDefault> {{s}} </span>
+                    </span>
+                </span>
+            </label>
+        </div>
+        <div class="col-6" style="text-align: right;">
+            <button type="button" class="btn btn-primary" (click)="RefreshEvent()" *ngIf="state.showRefresh"><mat-icon style="vertical-align: middle;">refresh</mat-icon>{{state.language.refresh}}</button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <div *ngIf="processing" class="vuce2-grid-table_processing">{{state.language.processing}}</div>
+            <table class="table table-hover" ngClass="{{options.className || ''}}" role="grid">
+                <thead>
+                    <tr role="row">
+                        <!-- OJO VER-->
+                        <th *ngFor="let column of state.columns" [style.width]="column.def.width">
+                            {{column.def.title}}
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- OJO VER (click)="cellClick(row, column)" -->
+                    <tr *ngFor="let row of rows; index as i">
+                        <ng-container *ngFor="let column of columns" [style.width]="column.width">
+                            <td *ngIf="!column.hidden">
+                                <ng-container
+                                    [ngTemplateOutlet]="getCellTemplate(column, standardCell)"
+                                    [ngTemplateOutletContext]="{
+                                        row: row,
+                                        rowIndex: i,
+                                        data: getData(row, column.name),
+                                        col: column
+                                    }">
+                                </ng-container>
+                                <ng-template #standardCell let-data="data" let-col="col">
+                                    <span>{{ getData(row, column.name) }}</span>
+                                </ng-template>
+                            </td>
+                        </ng-container>
+                    </tr>
+                    <tr *ngIf="rows.length==0">
+                        <td style="text-align: center;" [colSpan]="state.columns.length">{{state.language.dataEmpty}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="row" *ngIf="paging.showPaging">
+        <div class="col-6">
+            <div *ngIf="rows.length > 0" role="status">
+                <span *ngFor="let s of state.language.info.split(' ')">
+                    <span [ngSwitch]="s">
+                        <span *ngSwitchCase="'_START_'">{{(state.paging.currentPage - 1) * state.paging.itemsPerPage + 1}}
+                        </span>
+                        <span *ngSwitchCase="'_END_'">{{(state.paging.currentPage - 1) * state.paging.itemsPerPage +
+                            rows.length}} </span>
+                        <span *ngSwitchCase="'_TOTAL_'">{{state.paging.recordsFiltered}} </span>
+                        <span *ngSwitchDefault>{{s}} </span>
+                    </span>
+                </span>
+            </div>
+        </div>
+        <div class="col-6">
+            <div class="float-right">
+                <pagination *ngIf="rows.length > 0" 
+                    [(ngModel)]="state.paging.currentPage"
+                    [totalItems]="state.paging.recordsFiltered" 
+                    [itemsPerPage]="state.paging.itemsPerPage"
+                    [maxSize]="paging.maxSize" 
+                    [boundaryLinks]="false" [rotate]="false"
+                    (pageChanged)="state.changePaging($event.page, $event.itemsPerPage)" [firstText]="state.language.pagination.first"
+                    [lastText]="state.language.pagination.last" 
+                    [nextText]="state.language.pagination.next"
+                    [previousText]="state.language.pagination.previous">
+                </pagination>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,24 @@
+.spanExam {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.hint-info-archivo {
+    font-size: 1.05em;
+    color: #353535;
+
+    mat-icon {
+        font-size: 11px;
+        margin-right: -10px
+    }
+}
+
+.hint-error-archivo {
+    font-size: 1.05em;
+    color: #a30000;
+
+    mat-icon {
+        font-size: 11px;
+        margin-right: -10px
+    }
+}

@@ -1,0 +1,28 @@
+{
+  "name": "vuce2-custom",
+  "version": "0.0.5",
+  "description": "Lib Vuce v.2",
+  "homepage": "https://github.com/cyenque/vuce2-libs",
+  "bugs":{
+    "url" : "https://github.com/cyenque/vuce2-libs",
+    "email" : "cyenque@gmail.com"
+  },
+  "license": "MIT",
+  "author": {
+    "name" : "Cesar Yenque",
+    "email" : "cyenque@gmail.com",
+    "url" : "https://github.com/cyenque"
+  },
+  "peerDependencies": {
+    "@angular/common": "^12.2.0",
+    "@angular/core": "^12.2.0",
+    "@angular/material": "^12.2.13",
+    "@angular/material-moment-adapter": "^13.0.3",
+    "ngx-bootstrap": "^8.0.0",
+    "moment": "^2.29.1",
+    "sweetalert2": "^11.4.4"
+  },
+  "dependencies": {
+    "tslib": "^2.3.0"
+  }
+}

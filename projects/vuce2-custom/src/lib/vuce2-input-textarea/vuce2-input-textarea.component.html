@@ -1,0 +1,15 @@
+<mat-form-field appearance="outline">
+  <mat-label>{{etiqueta}}</mat-label>
+    <textarea 
+      rows="3" 
+      matInput 
+      placeholder={{placeholder}} 
+      (input)="onChangeValue($event)"
+      (blur)="onTouched()"
+      [disabled] = "disabled">
+      {{value}}
+    </textarea>
+  <mat-icon matSuffix>{{icono}}</mat-icon>
+  <mat-hint>{{texto_alternativo}}</mat-hint>
+</mat-form-field>
+<vuce2-form-error-msg [control]="control" ></vuce2-form-error-msg> 

@@ -1,0 +1,8 @@
+<div class="espaciado">
+  <label>{{etiqueta}}</label><br>
+  <mat-checkbox class="example-margin" *ngFor="let item of items" [checked]="item.checked" [disabled]="item.disabled"
+    (change)="onChangeValue($event)" [value]="item.textValue" (focusout)="onTouched()">
+    {{item.textValue}}
+  </mat-checkbox>
+  <vuce2-form-error-msg [control]="control"></vuce2-form-error-msg>
+</div>

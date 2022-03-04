@@ -1,0 +1,9 @@
+   <mat-checkbox class="example-margin"    
+    [checked]="checked" 
+    [disabled]="disabled"
+    (change)="onChangeValue($event)"     
+    (focusout) = "onTouched()"
+  >
+  {{textValue}}
+  </mat-checkbox>   
+  <vuce2-form-error-msg [control]="control"></vuce2-form-error-msg> 
