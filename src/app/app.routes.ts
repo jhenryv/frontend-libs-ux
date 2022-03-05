@@ -1,10 +1,12 @@
 import { Routes } from "@angular/router";
+import { FormControlComponent } from "./modules/custom-control/form-control/form-control.component";
 
 export const APP_ROUTES: Routes = [
 
     {
-        path: 'form',
-        loadChildren: ()=> import('./modules/form-custom/form-custom.module')
-            .then(m=>m.FormCustomModule)
+        path: 'custom',
+        component: FormControlComponent,
+        pathMatch: 'full'
+
     },
 ]

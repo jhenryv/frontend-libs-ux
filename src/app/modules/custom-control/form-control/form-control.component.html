@@ -1,0 +1,24 @@
+<div class="container mb-5">
+
+<form [formGroup]="form">
+    <div class="row">
+        <vuce2-input-text formControlName="direccion"
+            [etiqueta]="'Direccion'" 
+            [placeholder]="'Ingrese la direccion'"
+            [control] = "direccion">
+        </vuce2-input-text>
+    </div>
+ <div class="row">
+        <vuce2-select [etiqueta]="'Producto'" [items]="productos"
+            formControlName="producto"
+            [control] = "producto">
+        </vuce2-select>
+    </div>
+    <div class="row">
+        <vuce2-button [texto]="'Guardar'" [colors]="'warn'" (click)="guardar()"></vuce2-button>
+    </div> 
+    <div class="row">
+        {{dataForm}}
+    </div>
+</form>
+</div>
