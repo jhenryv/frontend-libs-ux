@@ -1,0 +1,69 @@
+<div class="container mt-5 bg-light">    
+    <div class="title text-center">
+        <h4>{{titulo}}</h4>
+    </div>  
+    <div class="content">       
+        <div class="row">
+            <div class="col-3 label">
+                Alerta con icono:
+            </div>           
+            <vuce2-alert-icon
+                [icono] = "icon_alert"
+                [texto] = "alerta">
+            </vuce2-alert-icon>                                 
+        </div>
+        <div class="row">
+            <div class="col-3 label">
+                Link: 
+            </div>            
+            <vuce2-link 
+                [url] = "url_link"
+                [texto] = "link">
+            </vuce2-link>
+        </div>
+        <div class="row">
+            <div class="col-3 label">
+                Label con icono:
+            </div>
+            <vuce2-label-icon
+                [url] = "url_label_icon"
+                [path_img] = "path_icon"
+                [texto] = "label_icon">
+            </vuce2-label-icon>        
+        </div>
+        <div class="row">
+            <div class="col-3 label">
+                Badge:
+            </div>          
+            <vuce2-icon-badge
+                [url] = "url_badge"
+                [valor] = "valor_badge"
+                [path_img] = "path_img_badge">
+            </vuce2-icon-badge>
+        </div>    
+        <div class="row">
+            <div class="col-3 label">
+                Card:
+            </div>            
+            <vuce2-card
+                [card] = "card">
+            </vuce2-card>               
+        </div>
+        <div class="row mb-3">
+            <div class="col-3 label">
+                NavBar:
+            </div>    
+            <vuce2-nav
+                [items] = "navBars">
+            </vuce2-nav>       
+        </div> 
+        <div class="row">
+            <div class="col-3 label">
+                BreadCrumb: 
+            </div>
+            <vuce2-breadcrumb
+                [items] = "breadCrumbs">
+            </vuce2-breadcrumb>
+        </div>            
+    </div>       
+</div>

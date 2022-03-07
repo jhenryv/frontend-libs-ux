@@ -3,24 +3,20 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
-import { CustomControlModule } from './modules/custom-control/custom-control.module';
+import { ControlCustomModule } from './modules/control-custom/control-custom.module';
 import { APP_ROUTES } from './app.routes';
-import { Vuce2MaterialModule } from 'projects/vuce2-custom/src/public-api';
-
-const vuce2Modules = [
-  Vuce2MaterialModule
-];
+import { LayoutComponent } from './layout/layout.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    LayoutComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    RouterModule.forRoot(APP_ROUTES),
-    vuce2Modules,
-    CustomControlModule
+    RouterModule.forRoot(APP_ROUTES),  
+    ControlCustomModule   
   ],
   providers: [],
   bootstrap: [AppComponent]

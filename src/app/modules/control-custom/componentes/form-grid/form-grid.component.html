@@ -1,0 +1,27 @@
+<div class="container-fluid mt-5">
+    <div class="page-header title text-center">
+        <h4>Grilla VUCE2</h4>
+        <button mat-stroked-button (click)="onLang('en')">EN</button>
+        <button mat-stroked-button (click)="onLang('es')">ES</button>       
+    </div>
+    
+
+    <vuce2-grid #grid 
+        [options]="options" 
+        [columns]="columns" 
+        [datasource]="datasource" 
+        [paging]="paging"
+        (onRefresh)="handlerRefresh($event)">
+
+
+        <ng-template vuce2GridCellTemplate="btnEdit" let-data='data' let-row='row'>
+            <vuce2-action-btnEdit (click)="handlerEdit(row)" style="width: max-content;"></vuce2-action-btnEdit>
+        </ng-template>
+        <ng-template vuce2GridCellTemplate="btnDelete" let-data='data' let-row='row'>
+            <vuce2-action-btnDelete (click)="handlerDelete(row)"></vuce2-action-btnDelete>
+        </ng-template>
+
+    </vuce2-grid>
+    
+    
+</div>

@@ -1,0 +1,53 @@
+
+<div class="container bg-light mt-5">    
+    <div class="title text-center">
+        <h4>{{titulo}}</h4>
+    </div>  
+    <div class="content">
+        <form [formGroup]="form">               
+            <div class="row">
+                <vuce2-input-text formControlName="direccion" [etiqueta]="'Direccion'"
+                    [placeholder]="'Ingrese la direccion'" [control]="direccion">
+                </vuce2-input-text>
+            </div>
+            <div class="row">
+                <vuce2-select [etiqueta]="'Producto'" [items]="productos" formControlName="producto"
+                    [control]="producto">
+                </vuce2-select>
+            </div>
+            <div class="row">
+                <vuce2-radio-button                   
+                    [etiqueta] = "'Rubro'"
+                    [item]="rubros"  
+                    formControlName="rubro" 
+                    [control] = "rubro">
+                </vuce2-radio-button>
+            </div>
+            <div class="row">
+                <vuce2-check-box
+                    [textValue] = "'Tiene permiso?'"
+                    formControlName="permitido" >
+                </vuce2-check-box>
+            </div>
+            <div class="row">
+                <vuce2-input-textarea 
+                    [etiqueta]="'Comentarios'" 
+                    [control] = "comentario"
+                    formControlName = "comentario">
+                </vuce2-input-textarea>               
+            </div>
+            
+            <div class="row mt-3">
+                <vuce2-button 
+                [texto]="'Guardar'"
+                [colors]="'warn'" 
+                [disabled]="form.invalid"
+                (click)="guardar()"></vuce2-button>
+            </div>
+        </form>        
+    </div>   
+</div>
+      
+            
+       
+
